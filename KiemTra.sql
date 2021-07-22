@@ -25,7 +25,6 @@ subjectid int primary key,
 subjectname varchar(30)
 );
 
-
 create table marks (
 mark int,
 subjectid int,
@@ -33,7 +32,7 @@ studentid int,
 foreign key (subjectid) references subjects (subjectid),
 foreign key (studentid) references students (studentid)
 );
-drop table marks;
+
 insert into students
 values (1,'Nguyen Quang An',18,'an@yahoo.com'),
 (2,'Nguyen Cong Vinh',20,'vinh@gmail.com'),
@@ -97,13 +96,8 @@ ALTER TABLE subjects
 MODIFY  subjectname varchar(200);
 
 -- Cap nhat them dong chu « Day la mon hoc «  vao truoc cac ban ghi tren cot SubjectName trong bang Subjects
-drop table subjects;
-drop table marks;
-insert into subjects
-values (1,' Day la mon hoc SQL'),
-(2,'Day la mon hoc Java'),
-(3,'Day la mon hoc C'),
-(4,'Day la mon hoc Visual Basic');
+UPDATE subjects
+SET subjectname = concat ('Day la mon hoc',' ',subjectname);
 
 -- Viet Check Constraint de kiem tra do tuoi nhap vao trong bang Student yeu cau Age >15 va Age < 50
 ALTER TABLE students
